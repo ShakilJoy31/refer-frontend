@@ -5,6 +5,8 @@ import Providers from "../hooks/Providers";
 import { Toaster } from "react-hot-toast";
 import { CartProvider } from "@/hooks/CartContext";
 import { WishlistProvider } from "@/hooks/WishlistContext";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -35,6 +37,7 @@ export default function RootLayout({
           </ThemeProvider>
           <Toaster />
         </Providers>
+         <ToastContainer />
       </body>
     </html>
   );

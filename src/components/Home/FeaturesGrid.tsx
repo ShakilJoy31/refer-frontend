@@ -1,15 +1,15 @@
-// components/Home/FeaturesGrid.tsx (✅ Client Component)
 "use client";
 
 import { motion } from "framer-motion";
-import { Truck, Clock, ShieldCheck, RefreshCw } from "lucide-react";
+import { Truck, Clock, ShieldCheck, RefreshCw, BookOpen } from "lucide-react";
 import Paragraph from "../reusable-components/Paragraph";
 
 const iconMap = {
-  Truck: <Truck className="w-8 h-8 text-white" />,
+  BookOpen: <BookOpen className="w-8 h-8 text-white" />,
   Clock: <Clock className="w-8 h-8 text-white" />,
   ShieldCheck: <ShieldCheck className="w-8 h-8 text-white" />,
   RefreshCw: <RefreshCw className="w-8 h-8 text-white" />,
+  Truck: <Truck className="w-8 h-8 text-white" />, // optional if you want delivery for books
 };
 
 export default function FeaturesGrid({ features }: { features: { icon: string; title: string }[] }) {
@@ -29,7 +29,9 @@ export default function FeaturesGrid({ features }: { features: { icon: string; t
           className="flex items-start gap-4 p-6 rounded-xl transition hover:cursor-pointer"
         >
           <div className="flex-shrink-0">{iconMap[feature.icon]}</div>
-          <Paragraph className="text-sm md:text-base leading-relaxed font-medium">{feature.title}</Paragraph>
+          <Paragraph className="text-sm md:text-base leading-relaxed font-medium">
+            {feature.title}
+          </Paragraph>
         </motion.div>
       ))}
     </div>

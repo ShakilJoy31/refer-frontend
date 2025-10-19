@@ -11,41 +11,41 @@ import InputField from "../ui/input";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-[#0099FF] to-black text-gray-300 relative">
+    <footer className="bg-gradient-to-b from-[#0f0c29] to-black text-gray-300 relative">
       {footerSvg}
 
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 pt-10 pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {/* Company Info */}
+        {/* Bookstore Info */}
         <div className="lg:col-span-1">
           <div className="mb-4">
             <Image
               src={siteLogo}
-              alt="E-Shop Logo"
+              alt="BookWorm Logo"
               width={160}
               height={60}
               className="w-72 h-28 object-contain"
             />
           </div>
           <Paragraph className="text-sm mb-4">
-            Your one-stop destination for quality products at affordable prices. We offer the best shopping experience with fast delivery and excellent customer service.
+            Welcome to <b>BookVerse</b> — your gateway to new worlds, timeless classics, and inspiring stories. Explore, read, and let your imagination travel beyond reality.
           </Paragraph>
 
           <div className="flex items-start gap-2 mb-3">
             <MdLocationOn className="text-blue-400 text-lg mt-0.5 flex-shrink-0" />
             <Paragraph className="text-sm">
-              123 Commerce Street, Shopping District, City Center, 10001
+              221B Library Lane, Booktown, Literature City, 56001
             </Paragraph>
           </div>
 
           <div className="flex items-center gap-2 mb-3">
             <FaPhoneAlt className="text-blue-400 text-lg flex-shrink-0" />
-            <Paragraph className="text-sm">+1 (555) 123-4567</Paragraph>
+            <Paragraph className="text-sm">+1 (800) 987-BOOK</Paragraph>
           </div>
 
           <div className="flex items-center gap-2 mb-6">
             <MdEmail className="text-blue-400 text-lg flex-shrink-0" />
-            <Paragraph className="text-sm">support@eshop.com</Paragraph>
+            <Paragraph className="text-sm">support@bookverse.com</Paragraph>
           </div>
 
           {/* Social Icons */}
@@ -65,38 +65,38 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Shop Categories */}
+        {/* Book Categories */}
         <div>
-          <Heading className="font-bold mb-4 text-white text-lg">Shop Categories</Heading>
+          <Heading className="font-bold mb-4 text-white text-lg">Book Categories</Heading>
           <ul className="space-y-2 text-sm">
             {[
-              "Electronics",
-              "Fashion",
-              "Home & Kitchen",
-              "Beauty & Health",
-              "Sports & Fitness",
-              "Books & Stationery",
-              "Toys & Games",
-              "Food & Grocery"
+              "Fiction & Literature",
+              "Science & Technology",
+              "Biographies & Memoirs",
+              "Self-Help & Motivation",
+              "Children's Books",
+              "History & Culture",
+              "Fantasy & Sci-Fi",
+              "Academic & Study Materials"
             ].map((item, index) => (
               <li key={index} className="hover:text-blue-400 cursor-pointer transition-colors">{item}</li>
             ))}
           </ul>
         </div>
 
-        {/* Customer Service */}
+        {/* Reader Support */}
         <div>
-          <Heading className="font-bold mb-4 text-white text-lg">Customer Service</Heading>
+          <Heading className="font-bold mb-4 text-white text-lg">Reader Support</Heading>
           <ul className="space-y-2 text-sm">
             {[
               "Contact Us",
               "FAQs",
-              "Shipping Information",
-              "Returns & Exchanges",
-              "Track Order",
-              "Size Guide",
+              "Delivery Information",
+              "Return & Replacement",
+              "Track Your Order",
+              "Author Collaboration",
               "Gift Cards",
-              "Wishlist"
+              "Membership Plans"
             ].map((item, index) => (
               <li key={index} className="hover:text-blue-400 cursor-pointer transition-colors">{item}</li>
             ))}
@@ -105,48 +105,48 @@ export default function Footer() {
 
         {/* Newsletter */}
         <div>
-          <Heading className="font-bold mb-4 text-white text-lg">Newsletter</Heading>
+          <Heading className="font-bold mb-4 text-white text-lg">Join Our Book Club</Heading>
           <Paragraph className="text-sm mb-4">
-            Subscribe to our newsletter for special offers and updates
+            Subscribe for book recommendations, new arrivals, author events & special offers.
           </Paragraph>
           <div className="flex flex-col gap-3">
             <InputField
               name="email"
               type="email"
-              placeholder="Email"
+              placeholder="Your Email"
               icon={<MdEmail className="h-5 w-5 text-gray-400" />}
               className="border border-cyan-500 rounded pl-10 pr-3 py-1.5 w-full focus:outline-none"
             />
-            <Button className="bg-gradient-to-r hover:cursor-pointer from-cyan-600 to-blue-700 hover:bg-blue-500 text-white py-2 rounded text-sm font-medium transition-colors">
+            <Button className="bg-gradient-to-r from-cyan-600 to-blue-700 hover:bg-blue-500 hover:cursor-pointer text-white py-2 rounded text-sm font-medium transition-colors">
               Subscribe
             </Button>
           </div>
 
           <div className="mt-6">
-            <Heading className="font-bold mb-3 text-white text-sm">Payment Methods</Heading>
+            <Heading className="font-bold mb-3 text-white text-sm">Payment Options</Heading>
             <div className="flex gap-2">
               <MdPayment className="text-2xl bg-white p-1 rounded" />
               <Paragraph className="bg-white p-1 rounded text-xs font-bold px-2 text-gray-800 ">VISA</Paragraph>
               <Paragraph className="bg-white p-1 rounded text-xs font-bold px-2 text-gray-800 ">MC</Paragraph>
               <Paragraph className="bg-white p-1 rounded text-xs font-bold px-2 text-gray-800 ">AMEX</Paragraph>
-              <Paragraph className="bg-white p-1 rounded text-xs font-bold px-2 text-gray-800 ">PP</Paragraph>
+              <Paragraph className="bg-white p-1 rounded text-xs font-bold px-2 text-gray-800 ">PAYPAL</Paragraph>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="h-[1px] w-full bg-[#0099FF] "></div>
+      <div className="h-[1px] w-full bg-[#0099FF]"></div>
       <div className="container mx-auto mt-6 pb-4 flex flex-col md:flex-row justify-between items-center px-4">
         <Paragraph className="text-xs text-gray-500 mb-2 md:mb-0">
-          © 2023 E-Shop. All Rights Reserved.
+          © {new Date().getFullYear()} BookVerse. All Rights Reserved.
         </Paragraph>
         <div className="flex gap-4">
-          <span className=" cursor-pointer text-xs text-gray-500 hover:text-gray-300 transition-colors">Privacy Policy</span>
+          <span className="cursor-pointer text-xs text-gray-500 hover:text-gray-300">Privacy Policy</span>
           <span className="text-gray-600">|</span>
-          <span className=" cursor-pointer text-xs text-gray-500 hover:text-gray-300 transition-colors">Terms & Conditions</span>
+          <span className="cursor-pointer text-xs text-gray-500 hover:text-gray-300">Terms & Conditions</span>
           <span className="text-gray-600">|</span>
-          <span className=" cursor-pointer text-xs text-gray-500 hover:text-gray-300 transition-colors">Cookie Policy</span>
+          <span className="cursor-pointer text-xs text-gray-500 hover:text-gray-300">Cookie Policy</span>
         </div>
       </div>
     </footer>

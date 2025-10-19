@@ -13,38 +13,38 @@ import backgroundImage2 from "../../../public/banner-(1).jpg";
 import backgroundImage3 from "../../../public/banner-(2).jpg";
 import backgroundImage4 from "../../../public/banner-(3).jpg";
 
-// Banner data
+// Updated Banner data for Books
 const bannerSlides = [
   {
     id: 1,
     image: backgroundImage.src,
-    title: "Elevate Your Online Store with Modern E-Commerce Solutions",
-    description: "Discover a powerful e-commerce platform built with cutting-edge technology that delivers exceptional shopping experiences.",
-    buttonText: "EXPLORE DEMOS ↓",
+    title: "Discover Your Next Favorite Book Today",
+    description: "Explore a vast library of genres and titles curated for book lovers like you. Whether you're into thrillers or romance, we've got your next read.",
+    buttonText: "BROWSE BOOKS ↓",
     overlay: "bg-black/60"
   },
   {
     id: 2,
     image: backgroundImage2.src,
-    title: "Seamless Shopping Experience Across All Devices",
-    description: "Mobile-optimized design with intuitive navigation to convert visitors into loyal customers and drive business growth.",
-    buttonText: "SHOP NOW →",
+    title: "Read Anywhere, Anytime on Any Device",
+    description: "Enjoy seamless reading across mobile, tablet, and desktop. Your library is always with you, whether you're offline or online.",
+    buttonText: "START READING →",
     overlay: "bg-blue-900/50"
   },
   {
     id: 3,
     image: backgroundImage3.src,
-    title: "Lightning Fast Performance & Secure Payments",
-    description: "Experience blazing-fast load times and enterprise-grade security for worry-free transactions.",
-    buttonText: "LEARN MORE →",
+    title: "Fast Delivery & Instant Downloads",
+    description: "Order physical copies or download eBooks instantly. Get your favorite books delivered to your doorstep or device in no time.",
+    buttonText: "SHOP NOW →",
     overlay: "bg-purple-900/50"
   },
   {
     id: 4,
     image: backgroundImage4.src,
-    title: "AI-Powered Recommendations & Analytics",
-    description: "Smart product suggestions and detailed analytics to maximize your sales and customer engagement.",
-    buttonText: "GET STARTED →",
+    title: "Personalized Book Recommendations Powered by AI",
+    description: "Let our smart engine suggest your next read based on your preferences, reading history, and ratings.",
+    buttonText: "FIND YOUR BOOK →",
     overlay: "bg-green-900/50"
   }
 ];
@@ -69,7 +69,6 @@ export default function HomeBanner() {
           delay: 6000,
           disableOnInteraction: false,
         }}
-        
         navigation={{
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
@@ -152,7 +151,7 @@ export default function HomeBanner() {
           transform-origin: left;
           animation: progress 6s linear infinite;
         }
-        
+
         @keyframes progress {
           0% {
             transform: scaleX(0);
@@ -161,16 +160,16 @@ export default function HomeBanner() {
             transform: scaleX(1);
           }
         }
-        
+
         .swiper-pagination {
           bottom: 8px !important;
         }
-        
+
         .swiper-pagination-bullet-active {
           background: white !important;
           transform: scale(1.2);
         }
-        
+
         /* Mobile optimizations */
         @media (max-width: 640px) {
           .swiper-button-next,

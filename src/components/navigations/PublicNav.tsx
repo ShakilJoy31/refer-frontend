@@ -17,8 +17,7 @@ import Button from "../reusable-components/Button";
 // ==============================
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Products", path: "/products" },
-  { name: "About Us", path: "/about-us" },
+  { name: "Books", path: "/books" },
   { name: "Login", path: "/authentication/login" },
   { name: "Terms & Condition", path: "/terms-and-condition" },
 ];
@@ -76,13 +75,13 @@ const getDesktopLinkClasses = (isActive: boolean, isScrolled: boolean, pathname:
     "/contact",
     "/cart",
     "/wishlist",
-    "/products",
+    "/books",
     "/checkout",
   ];
 
   // check if it's a special path or a product-details dynamic route
   const isSpecialPath =
-    specialPaths.includes(pathname) || pathname.startsWith("/products/product-details/");
+    specialPaths.includes(pathname) || pathname.startsWith("/books/book-details/");
 
   if (isActive) {
     return `${baseClasses} ${isSpecialPath

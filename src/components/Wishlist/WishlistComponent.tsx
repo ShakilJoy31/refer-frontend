@@ -106,7 +106,7 @@ const WishlistTable: React.FC<WishlistTableProps> = ({ onClear }) => {
   // Render function for table rows
   const renderRow = (item: Product) => (
     <>
-      <td onClick={() => router.push(`/products/product-details/${item?.slug}`)} className="px-6 py-4 whitespace-nowrap hover:cursor-pointer ">
+      <td onClick={() => router.push(`/books/book-details/${item?.slug}`)} className="px-6 py-4 whitespace-nowrap hover:cursor-pointer ">
         <div className="flex items-center gap-4">
           <div className="relative w-16 h-16 flex-shrink-0">
             <Image

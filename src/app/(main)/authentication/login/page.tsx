@@ -1,26 +1,24 @@
-
-import AuthForm from "@/components/Authentication/Authentication";
+import LoginForm from "@/components/Authentication/LoginForm";
 import { generateDynamicMetadata } from "@/metadata/generateMetadata";
 
 export async function generateMetadata() {
   return generateDynamicMetadata({
-    title: "Premium Online Store | Authentication ",
-    description: "Discover amazing products at unbeatable prices. Shop the latest trends in electronics, fashion, home goods and more. Free shipping on orders over $50. Secure checkout guaranteed.",
+    title: "Premium Online Store | Login",
+    description: "Welcome back to your premium shopping experience. Access your account to continue shopping and managing your referrals.",
     keywords: [
-      "online shopping", "ecommerce store", "buy products online",
-      "electronics", "fashion", "home decor", "premium products",
-      "discounts", "free shipping", "secure checkout", "best deals",
-      "shopping", "online store", "quality products", "affordable prices"
+      "login", "sign in", "account access",
+      "secure login", "member portal", "shopping account",
+      "user login", "secure authentication", "premium access"
     ],
   });
 }
 
-const Home = () => {
+const LoginPage = () => {
   return (
-    <div className="bg-[#F4F6F8] dark:bg-gray-600">
-        <AuthForm></AuthForm>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <LoginForm />
     </div>
   )
 }
 
-export default Home;
+export default LoginPage;

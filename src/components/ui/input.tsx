@@ -13,6 +13,7 @@ interface InputFieldProps {
   errorMessage?: string;
   className?: string;
   autoFocus?: boolean;
+  inputLabelClassName?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -23,6 +24,7 @@ const InputField: React.FC<InputFieldProps> = ({
   name,
   onChange,
   icon,
+  inputLabelClassName,
   className,
   min,
   step,
@@ -32,7 +34,7 @@ const InputField: React.FC<InputFieldProps> = ({
     <div className="flex flex-col w-full">
       {/* Label */}
       {label && (
-        <label className="mb-1 text-sm font-medium text-gray-700 dark:text-gray-300 ">
+        <label className={`${inputLabelClassName}`}>
           {label}
         </label>
       )}
