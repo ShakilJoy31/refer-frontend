@@ -8,7 +8,7 @@ const customBaseQuery = fetchBaseQuery({
   prepareHeaders(headers) {
     headers.set(
       "Authorization",
-      `Bearer ${shareWithCookies("get", `${appConfiguration.appCode}token`)}`
+      `Bearer ${shareWithCookies("get", `token`)}`
     );
     return headers;
   },
@@ -18,8 +18,9 @@ export const apiSlice = createApi({
   baseQuery: customBaseQuery,
   endpoints: () => ({}),
   tagTypes: [
-   
     "file",
-    "auth"
+    "auth",
+    "purchase",
+    "Dashboard",
   ],
 });

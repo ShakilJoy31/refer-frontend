@@ -2,14 +2,15 @@ import Heading from "../reusable-components/Heading";
 
 const categories = [
     "View All",
-    "Electronics",
-    "Accessories",
-    "Clothing",
-    "Grocery & Staples",
-    "Organic Food",
-    "Biscuits & Snacks",
-    "Fresh Fruits",
-    "Fruit & Vegetables",
+    "Fiction",
+    "Self-Help",
+    "Science Fiction",
+    "Fantasy",
+    "Mystery",
+    "Memoir",
+    "Psychology",
+    "History",
+    "Young Adult"
 ];
 
 interface CategoryFilterProps {

@@ -3,7 +3,7 @@
 import { useCart } from "@/hooks/CartContext";
 import Image from "next/image";
 import React, { useState } from "react";
-import productImage from "../../../public/Product1.jpg";
+import productImage from "../../../public/home-banner (3).jpg";
 import Button from "../reusable-components/Button";
 import { IoTrashBin } from "react-icons/io5";
 import Heading from "../reusable-components/Heading";

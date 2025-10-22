@@ -12,9 +12,13 @@ export const appConfiguration: IConfigurationProps = {
   baseUrl:"https://refer-server.onrender.com/api/v1/filesure-assignment",
 };
 
+
+
+// I am fetching the book data from public/products.json file to make the user purchase the book 
+
 // Development Url.........
 // http://localhost:3000
 
 // Production Url........
-// https://e-commerce-template-olive-seven.vercel.app
-export const baseUrl = 'https://e-commerce-template-olive-seven.vercel.app';
+// https://refer-frontend-nu.vercel.app
+export const baseUrl = 'https://refer-frontend-nu.vercel.app';

@@ -5,13 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Product } from "@/types/product/productCardTypes";
 import PriceSection from "./PriceSection";
 import DeliveryOptions from "./DeliveryOptions";
-import { ShoppingCart, Share2, Star } from "lucide-react";
+import { Share2, Star } from "lucide-react";
 import Button from "../reusable-components/Button";
 import { useCart } from "@/hooks/CartContext";
 import { useWishlist } from "@/hooks/WishlistContext";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import Heading from "../reusable-components/Heading";
 import Paragraph from "../reusable-components/Paragraph";
+import { useRouter } from "next/navigation";
 
 interface ProductDetailsSectionProps {
     product: Product;
@@ -20,6 +21,7 @@ interface ProductDetailsSectionProps {
 export default function ProductDetailsSection({ product }: ProductDetailsSectionProps) {
     const [quantity, setQuantity] = useState(1);
     const { addToCart } = useCart();
+    const router = useRouter();
     const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
     const isWishlisted = isInWishlist(product.id);
 
@@ -28,6 +30,10 @@ export default function ProductDetailsSection({ product }: ProductDetailsSection
 
     const handleAddToCart = () => {
         addToCart(product, 1);
+        setTimeout(() => {
+            router.push('/checkout');
+        }, 500)
+
     };
 
     const handleWishlist = (e: React.MouseEvent) => {
@@ -105,8 +111,7 @@ export default function ProductDetailsSection({ product }: ProductDetailsSection
                     onClick={handleAddToCart}
                     className="flex-1 flex items-center justify-center gap-2 py-1.5 bg-gradient-to-r hover:cursor-pointer from-cyan-600 to-blue-700 text-white rounded-md transition-colors"
                 >
-                    <ShoppingCart className="w-5 h-5" />
-                    Add to Cart
+                    Procceed to Checkout
                 </Button>
 
                 <Button

@@ -14,6 +14,7 @@ interface InputFieldProps {
   className?: string;
   autoFocus?: boolean;
   inputLabelClassName?: string;
+  disabled?: boolean; // Add this line
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -29,6 +30,7 @@ const InputField: React.FC<InputFieldProps> = ({
   min,
   step,
   autoFocus,
+  disabled, // Add this line
 }) => {
   return (
     <div className="flex flex-col w-full">
@@ -59,6 +61,7 @@ const InputField: React.FC<InputFieldProps> = ({
           step={step}
           className={className}
           autoFocus={autoFocus}
+          disabled={disabled} // Add this line
         />
       </div>
 

@@ -1,23 +1,18 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-const DataLoader = () => {
+const DataLoader = ({textToRender} : {textToRender: string}) => {
   return (
-    <div>
-      <div className="loader">
-        <div className="bar1"></div>
-        <div className="bar2"></div>
-        <div className="bar3"></div>
-        <div className="bar4"></div>
-        <div className="bar5"></div>
-        <div className="bar6"></div>
-        <div className="bar7"></div>
-        <div className="bar8"></div>
-        <div className="bar9"></div>
-        <div className="bar10"></div>
-        <div className="bar11"></div>
-        <div className="bar12"></div>
-      </div>
-    </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="text-white text-xl flex items-center space-x-3"
+    >
+      <div className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+      <span>{textToRender}</span>
+    </motion.div>
+  </div>
   );
 };
 

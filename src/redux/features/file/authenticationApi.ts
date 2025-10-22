@@ -1,15 +1,6 @@
 import { apiSlice } from "@/redux/api/apiSlice";
+import { LoginData, RegisterData, UpdateUserData, UserData } from "@/types/authenticationInterface";
 
-interface LoginData {
-  email: string;
-  password: string;
-}
-
-interface RegisterData {
-  name: string;
-  email: string;
-  password: string;
-}
 
 const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -31,18 +22,41 @@ const authApi = apiSlice.injectEndpoints({
       invalidatesTags: ["auth"],
     }),
 
-    getCurrentUser: builder.query({
-      query: () => ({
-        url: "/auth/me",
+    // Query to get user by ID
+    getUserById: builder.query<{
+      status: string;
+      data: {
+        user: UserData;
+      };
+    }, string>({
+      query: (userId: string) => ({
+        url: `/get-user-by-id?id=${userId}`,
         method: "GET",
       }),
       providesTags: ["auth"],
     }),
+
+    // Mutation to update user by ID
+    updateUserById: builder.mutation<{
+      status: string;
+      data: {
+        user: UserData;
+      };
+    }, { userId: string; userData: UpdateUserData }>({
+      query: ({ userId, userData }) => ({
+        url: `/update-user-by-id/${userId}`,
+        method: "PUT",
+        body: userData,
+      }),
+      invalidatesTags: ["auth"],
+    }),
+
   }),
 });
 
 export const {
   useLoginMutation,
   useRegisterMutation,
-  useGetCurrentUserQuery,
+  useGetUserByIdQuery,
+  useUpdateUserByIdMutation, // Export the new mutation
 } = authApi;

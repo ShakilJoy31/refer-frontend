@@ -11,9 +11,11 @@ import Link from "next/link";
 import { useLoginMutation } from "@/redux/features/file/authenticationApi";
 import { saveTokenToCookie } from "@/utils/helper/tokenHelper";
 import { toastShowing } from "../reusable-components/toastShowing";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
     const [showPassword, setShowPassword] = useState(false);
+    const router = useRouter();
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -23,9 +25,7 @@ export default function LoginForm() {
         password: ""
     });
 
-    const [login, { data, isLoading, error }] = useLoginMutation();
-
-    console.log(data)
+    const [login, { isLoading, error }] = useLoginMutation();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -66,16 +66,17 @@ export default function LoginForm() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
         if (!validateForm()) {
             return;
         }
-
         try {
             const result = await login(formData).unwrap();
             if (result.status === 'success') {
                 saveTokenToCookie(result?.data?.token);
-                toastShowing('Success!', 'bottom-right', 2000, 'green', 'white');
+                toastShowing('Success! Redirecting to home page.', 'bottom-right', 2000, 'green', 'white');
+                setTimeout(() => {
+                    router.push('/')
+                }, 2000)
             } else {
                 toastShowing('OPPS! Failed to signup!', 'bottom-right', 2000, 'green', 'white');
             }
@@ -157,7 +158,9 @@ export default function LoginForm() {
                                 animate={{ opacity: 1, y: 0 }}
                                 className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-2xl text-red-200 text-sm"
                             >
-                                {"data" in error ? "Login failed" : "Login failed"}
+                                {"data" in error && typeof error.data === "object" && error.data !== null && "message" in error.data
+                                    ? (error.data as { message?: string }).message
+                                    : "Login failed"}
                             </motion.div>
                         )}
 
@@ -234,22 +237,11 @@ export default function LoginForm() {
                                 )}
                             </motion.div>
 
-                            {/* Forgot Password Link */}
-                            <motion.div
-                                className="text-right"
-                            >
-                                <Link
-                                    href="/forgot-password"
-                                    className="text-sm font-medium text-cyan-300 hover:text-cyan-200 transition-colors duration-200"
-                                >
-                                    Forgot your password?
-                                </Link>
-                            </motion.div>
-
                             {/* Submit Button */}
                             <motion.div
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
+                                className='pt-4'
                             >
                                 <Button
                                     type="submit"
@@ -293,15 +285,6 @@ export default function LoginForm() {
                             </motion.div>
                         </motion.form>
 
-                        {/* Divider */}
-                        <motion.div
-                            className="mt-8 flex items-center"
-                        >
-                            <div className="flex-1 border-t border-white/20"></div>
-                            <span className="px-4 text-white/60 text-sm">Or continue with</span>
-                            <div className="flex-1 border-t border-white/20"></div>
-                        </motion.div>
-
                         {/* Sign Up Link */}
                         <motion.div
                             className="mt-8 text-center"
@@ -309,7 +292,7 @@ export default function LoginForm() {
                             <Paragraph className="text-white/70 text-sm">
                                 Don&apos;t have an account?{" "}
                                 <Link
-                                    href="/authentication/signup"
+                                    href="/register"
                                     className="text-cyan-300 hover:text-cyan-200 font-semibold transition-colors duration-200 underline"
                                 >
                                     Create one here

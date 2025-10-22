@@ -5,30 +5,44 @@ import InputField from "../ui/input";
 import Button from "../reusable-components/Button";
 import { useCart } from "@/hooks/CartContext";
 import { MdLocalShipping, MdDone } from "react-icons/md";
+import { usePurchaseMutation } from "@/redux/features/file/purchaseApi";
+import { getUserInfoFromToken } from "@/utils/helper/tokenHelper";
+import { useGetUserByIdQuery } from "@/redux/features/file/authenticationApi";
+import DataLoader from "../reusable-components/DataLoader";
+import { toastShowing } from "../reusable-components/toastShowing";
+
 
 export default function CheckoutForm() {
   const { items } = useCart();
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
   const [cardNumber, setCardNumber] = useState('');
+  const userInfo = getUserInfoFromToken();
 
-  // Calculate totals
+  const [purchase, { isLoading, isSuccess }] = usePurchaseMutation();
+
+  const { data, isLoading: userLoading } = useGetUserByIdQuery(userInfo?.id);
+
+  if (userLoading) return <DataLoader textToRender={'Please Wait...'}></DataLoader>;
+
   const subtotal = items.reduce((total, item) => total + (item.price * item.quantity), 0);
   const orderTotal = subtotal; // Add shipping/tax if needed
 
-  const onCheckout = () => {
-    setIsProcessing(true);
-
-    // Simulate processing time
-    setTimeout(() => {
-      setIsProcessing(false);
-      setIsComplete(true);
-
-      // Reset after 5 seconds
-      setTimeout(() => {
-        setIsComplete(false);
-      }, 3000);
-    }, 2000); // Processing animation duration
+  const onCheckout = async () => {
+    try {
+      const result = await purchase({
+        referredBy: data?.data?.user?.referredBy,  // The person who referred
+        purchasedReferId: userInfo?.id // Unique ID for this purchase referral
+      }).unwrap();
+      if (result?.status === "success") {
+        toastShowing(result?.message, 'bottom-right', 2000, 'green', 'white');
+        setTimeout(() => {
+          window.location.reload();
+        }, 2500)
+      } else {
+        toastShowing(result?.message, 'bottom-right', 2000, 'red', 'white');
+      }
+    } catch (error) {
+      toastShowing(error?.message, 'bottom-right', 2000, 'red', 'white');
+    }
   };
 
   return (
@@ -109,25 +123,25 @@ export default function CheckoutForm() {
           <h3 className="text-sm font-semibold mb-2">Payment With Card</h3>
           <div className="border border-gray-300 rounded-md px-4 py-3 mb-6">
             <InputField onChange={(e) => setCardNumber(e.target.value)}
-              label="Card Number *"
+              label="Card Number (16 digit) *"
               className="border border-cyan-500 rounded px-3 py-1.5 w-full focus:outline-none"
               type="text"
-              placeholder="Card Number"
+              placeholder="Type 16 Digit Card Number"
             />
           </div>
 
           <Button
-            className={`w-full bg-gradient-to-r from-cyan-600 to-blue-700 text-white py-2 rounded-md transition-colors font-medium flex items-center justify-center ${isProcessing || isComplete || cardNumber.length !== 16 ? "cursor-not-allowed" : "cursor-pointer"
+            className={`w-full bg-gradient-to-r from-cyan-600 to-blue-700 text-white py-2 rounded-md transition-colors font-medium flex items-center justify-center ${isLoading || isSuccess || cardNumber.length !== 16 ? "cursor-not-allowed" : "cursor-pointer"
               }`}
             onClick={onCheckout}
-            disabled={isProcessing || isComplete || cardNumber.length !== 16}
+            disabled={isLoading || isSuccess || cardNumber.length !== 16}
           >
-            {isProcessing ? (
+            {isLoading ? (
               <div className="flex items-center justify-center w-full">
                 <MdLocalShipping size={25} className="animate-moveRight mr-2" />
                 <span>Processing...</span>
               </div>
-            ) : isComplete ? (
+            ) : isSuccess ? (
               <div className="flex items-center justify-center w-full">
                 <MdDone size={25} className="text-green-300 mr-2" />
                 <span>Order Complete!</span>

@@ -4,9 +4,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ZoomIn, X } from "lucide-react";
 import { Product } from "@/types/product/productCardTypes";
-import productImage from "../../../public/product2.jpg";
+import productImage from "../../../public/home-banner (2).jpg";
 import Button from "../reusable-components/Button";
-import productImage2 from "../../../public/380.jpg";
+import productImage2 from "../../../public/home-banner (4).jpg";
 import Image from "next/image";
 
 interface ProductGalleryProps {

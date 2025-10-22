@@ -8,10 +8,10 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import backgroundImage from "../../../public/home-banner2.jpg";
-import backgroundImage2 from "../../../public/banner-(1).jpg";
-import backgroundImage3 from "../../../public/banner-(2).jpg";
-import backgroundImage4 from "../../../public/banner-(3).jpg";
+import backgroundImage from "../../../public/home-banner (1).jpg";
+import backgroundImage2 from "../../../public/home-banner (2).jpg";
+import backgroundImage3 from "../../../public/home-banner (5).jpg";
+import backgroundImage4 from "../../../public/home-banner (4).jpg";
 
 // Updated Banner data for Books
 const bannerSlides = [
