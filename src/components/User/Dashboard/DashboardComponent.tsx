@@ -34,7 +34,7 @@ export default function Dashboard() {
     const userInfo = getUserInfoFromToken();
 
     const { data, isLoading, error } = useGetUserDashboardQuery(userInfo.id!, {
-        skip: !userInfo?.id, // Skip query if no userId
+        skip: !userInfo.id, // Skip query if no userId
     });
 
       const { data:userData } = useGetUserByIdQuery(userInfo.id!, { 
@@ -256,25 +256,25 @@ export default function Dashboard() {
                             <tbody>
                                 <tr className="border-b border-white/10">
                                     <td className="px-6 py-4">Referred Users</td>
-                                    <td className="px-6 py-4 font-bold ">{stats.referredUsers}</td>
+                                    <td className="px-6 py-4 font-bold text-center">{stats.referredUsers}</td>
                                 </tr>
                                 <tr className="border-b border-white/10">
                                     <td className="px-6 py-4">Converted Users (Who purchased) </td>
-                                    <td className="px-6 py-4 font-bold ">{stats.convertedUsers}</td>
+                                    <td className="px-6 py-4 font-bold text-center">{stats.convertedUsers}</td>
                                 </tr>
                                  <tr className="border-b border-white/10">
                                     <td className="px-6 py-4">Pending Users (Not Purchased) </td>
-                                    <td className="px-6 py-4 font-bold ">{stats.referredUsers - stats.convertedUsers}</td>
+                                    <td className="px-6 py-4 font-bold text-center">{stats.referredUsers - stats.convertedUsers}</td>
                                 </tr>
                                 {
                                     userData?.data?.user?.isPurchased && <tr className="border-b border-white/10">
                                     <td className="px-6 py-4">Purchsed Book </td>
-                                    <td className="px-6 py-4 font-bold ">2</td>
+                                    <td className="px-6 py-4 font-bold text-center">2</td>
                                 </tr>
                                 }
                                 <tr>
                                     <td className="px-6 py-4">Total Credits Earned</td>
-                                    <td className="px-6 py-4 font-bold ">{stats.totalCreditsEarned + (userData?.data?.user?.isPurchased ? 2 : 0)}</td>
+                                    <td className="px-6 py-4 font-bold text-center">{stats.totalCreditsEarned + (userData?.data?.user?.isPurchased ? 2 : 0)}</td>
                                 </tr>
                             </tbody>
                         </table>

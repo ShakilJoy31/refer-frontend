@@ -1,10 +1,11 @@
-
-import Dashboard from "@/components/User/Dashboard/DashboardComponent";
+// app/(main)/user/dashboard/page.tsx
+import DashboardWrapper from "@/components/User/Dashboard/DashboardWrapper";
 import { generateDynamicMetadata } from "@/metadata/generateMetadata";
+
 
 export async function generateMetadata() {
   return generateDynamicMetadata({
-    title: "Referral Dashboard",
+    title: "Dashboard | Refer",
     description: "Track your referrals, converted users, and earned credits in your dashboard.",
     keywords: [
       "dashboard", "referral program", "earn credits",
@@ -14,7 +15,7 @@ export async function generateMetadata() {
 }
 
 const DashboardPage = () => {
-  return <Dashboard />;
+  return <DashboardWrapper />;
 }
 
 export default DashboardPage;

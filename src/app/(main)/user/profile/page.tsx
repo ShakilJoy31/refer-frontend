@@ -1,11 +1,12 @@
 
 
-import EditProfile from "@/components/User/Profile/EditProfile";
+
+import ProfileWrapper from "@/components/User/Profile/EditProfileWrapper";
 import { generateDynamicMetadata } from "@/metadata/generateMetadata";
 
 export async function generateMetadata() {
   return generateDynamicMetadata({
-    title: "My Profile",
+    title: "My Profile | Refer",
     description: "Track your referrals, converted users, and earned credits in your dashboard.",
     keywords: [
       "dashboard", "referral program", "earn credits",
@@ -15,7 +16,7 @@ export async function generateMetadata() {
 }
 
 const ProfilePage = () => {
-  return <EditProfile />;
+  return <ProfileWrapper />;
 }
 
 export default ProfilePage;
