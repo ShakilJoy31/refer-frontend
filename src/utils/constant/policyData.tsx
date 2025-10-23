@@ -9,7 +9,7 @@ export const tabs: Tab[] = [
                 <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Privacy Policy</h2>
                 <p className="text-base text-gray-700 dark:text-gray-300 mb-6">
                     At <strong className="text-green-600">BookHub</strong>, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you use our book platform, referral program, and related services.
-                </p>
+                </p> 
 
                 <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">1. Information We Collect</h3>
                 <p className="text-base text-gray-700 dark:text-gray-300 mb-4">
