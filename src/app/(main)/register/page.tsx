@@ -1,4 +1,4 @@
-// app/register/page.tsx (or wherever your SignupPage is)
+// app/register/page.tsx
 import RegisterForm from "@/components/Authentication/RegisterForm";
 import { generateDynamicMetadata } from "@/metadata/generateMetadata";
 
@@ -14,13 +14,14 @@ export async function generateMetadata() {
   });
 }
 
-// Accept searchParams from Next.js app router
-const SignupPage = ({ searchParams }: { searchParams?: { r?: string } }) => {
-  // Grab referral from search params (if present)
-  const referredBy = searchParams?.r ?? "";
+// Accept searchParams from Next.js app router - make it async
+const SignupPage = async ({ searchParams }: { searchParams?: Promise<{ r?: string }> }) => {
+  // Await searchParams before using its properties
+  const params = await searchParams;
+  const referredBy = params?.r ?? "";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* pass referredBy to client component */}
       <RegisterForm initialReferredBy={referredBy} />
     </div>

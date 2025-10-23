@@ -47,15 +47,15 @@ const PasswordInput = React.memo(({
             onChange={onChange}
             placeholder={placeholder}
             disabled={disabled}
-            icon={<FiLock className="text-white/50" size={18} />}
-            inputLabelClassName="flex items-center text-white/80 mb-3 font-medium"
-            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed pl-10 pr-12"
+            icon={<FiLock className="text-white/50 dark:text-gray-400" size={18} />}
+            inputLabelClassName="flex items-center text-white/80 dark:text-gray-200 mb-3 font-medium"
+            className="w-full bg-white/5 dark:bg-gray-700/50 border border-white/10 dark:border-gray-600/50 rounded-xl px-4 py-3 text-white dark:text-gray-100 placeholder-white/30 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed pl-10 pr-12"
         />
         <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
             disabled={disabled}
-            className="absolute right-3 hover:cursor-pointer transform -translate-y-1/2 text-white/50 hover:text-white/70 disabled:opacity-30"
+            className="absolute right-3 hover:cursor-pointer transform -translate-y-1/2 text-white/50 dark:text-gray-400 hover:text-white/70 dark:hover:text-gray-200 disabled:opacity-30"
             style={{ top: '70%' }}
         >
             {showPassword ? <FiEyeOff size={22} /> : <FiEye size={22} />}
@@ -140,11 +140,11 @@ export default function EditProfile() {
 
     if (error) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
+            <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
                     <div className="text-red-400 text-6xl mb-4">⚠️</div>
-                    <Heading className="text-2xl font-bold text-white mb-2">Error Loading Profile</Heading>
-                    <Paragraph className="text-white/70 mb-4">Failed to load user data. Please try again.</Paragraph>
+                    <Heading className="text-2xl font-bold text-white dark:text-white mb-2">Error Loading Profile</Heading>
+                    <Paragraph className="text-white/70 dark:text-gray-300 mb-4">Failed to load user data. Please try again.</Paragraph>
                     <Button onClick={() => window.location.reload()} className="bg-gradient-to-r from-purple-600 to-cyan-600 text-white">Retry</Button>
                 </motion.div>
             </div>
@@ -152,43 +152,43 @@ export default function EditProfile() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4 py-24">
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 px-4 py-24">
             <div className="max-w-7xl mx-auto">
                 <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="flex items-center justify-between mb-8">
                     <div className="flex items-center space-x-4">
-                        <Button onClick={() => window.history.back()} className="bg-white/10 hover:bg-white/20 border border-white/20 text-white p-3 rounded-xl">
+                        <Button onClick={() => window.history.back()} className="bg-white/10 dark:bg-gray-700/50 hover:bg-white/20 dark:hover:bg-gray-600/50 border border-white/20 dark:border-gray-600/50 text-white p-3 rounded-xl">
                             <FiArrowLeft size={20} />
                         </Button>
                         <div>
-                            <Heading className="text-3xl font-bold text-white">Edit Profile</Heading>
-                            <Paragraph className="text-white/70">Update your personal information and password</Paragraph>
+                            <Heading className="text-3xl font-bold text-white dark:text-white">Edit Profile</Heading>
+                            <Paragraph className="text-white/70 dark:text-gray-300">Update your personal information and password</Paragraph>
                         </div>
-                        {data?.data?.user?.isPurchased && <Button onClick={() => window.history.back()} className="bg-white/10 hover:bg-white/20 border border-white/20 text-white p-3 rounded-xl">Already Purchased Book</Button>}
+                        {data?.data?.user?.isPurchased && <Button className="bg-white/10 dark:bg-gray-700/50 hover:bg-white/20 dark:hover:bg-gray-600/50 border border-white/20 dark:border-gray-600/50 text-white p-3 rounded-xl">Already Purchased Book</Button>}
                     </div>
                     {!isEditing && (
-                        <Button onClick={handleEditToggle} className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center gap-2">
+                        <Button onClick={handleEditToggle} className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 dark:from-purple-700 dark:to-cyan-700 dark:hover:from-purple-600 dark:hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center gap-2">
                             <FiEdit3 size={18} /> Edit Profile
                         </Button>
                     )}
                 </motion.div>
 
                 {updateSuccess && (
-                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="bg-green-500/20 border border-green-500/30 text-green-300 p-4 rounded-xl mb-6 flex items-center">
+                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="bg-green-500/20 dark:bg-green-600/30 border border-green-500/30 dark:border-green-500/50 text-green-300 dark:text-green-400 p-4 rounded-xl mb-6 flex items-center">
                         <FiSave className="mr-3" size={20} /> Profile updated successfully!
                     </motion.div>
                 )}
 
                 {updateError && (
-                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="bg-red-500/20 border border-red-500/30 text-red-300 p-4 rounded-xl mb-6 flex items-center">
+                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="bg-red-500/20 dark:bg-red-600/30 border border-red-500/30 dark:border-red-500/50 text-red-300 dark:text-red-400 p-4 rounded-xl mb-6 flex items-center">
                         <FiSave className="mr-3" size={20} /> Failed to update profile. Please check your current password and try again.
                     </motion.div>
                 )}
 
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 p-8">
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white/10 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl border border-white/20 dark:border-gray-600/50 p-8">
                     <form onSubmit={handleSubmit}>
                         <div className="space-y-6">
                             <div>
-                                <Heading className="text-xl font-bold text-white mb-4 flex items-center"><FiUser className="mr-2" />Profile Information</Heading>
+                                <Heading className="text-xl font-bold text-white dark:text-white mb-4 flex items-center"><FiUser className="mr-2" />Profile Information</Heading>
 
                                 <div className="mb-4">
                                     <InputField
@@ -199,9 +199,9 @@ export default function EditProfile() {
                                         onChange={handleInputChange}
                                         placeholder="Enter your full name"
                                         disabled={!isEditing || isUpdating}
-                                        icon={<FiUser className="text-white/50" size={18} />}
-                                        inputLabelClassName="flex items-center text-white/80 mb-3 font-medium"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed pl-10"
+                                        icon={<FiUser className="text-white/50 dark:text-gray-400" size={18} />}
+                                        inputLabelClassName="flex items-center text-white/80 dark:text-gray-200 mb-3 font-medium"
+                                        className="w-full bg-white/5 dark:bg-gray-700/50 border border-white/10 dark:border-gray-600/50 rounded-xl px-4 py-3 text-white dark:text-gray-100 placeholder-white/30 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed pl-10"
                                     />
                                     {!isEditing && <div className="absolute inset-0 bg-transparent rounded-xl cursor-not-allowed"></div>}
                                 </div>
@@ -215,18 +215,18 @@ export default function EditProfile() {
                                         onChange={handleInputChange}
                                         placeholder="Enter your email address"
                                         disabled={!isEditing || isUpdating}
-                                        icon={<FiMail className="text-white/50" size={18} />}
-                                        inputLabelClassName="flex items-center text-white/80 mb-3 font-medium"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed pl-10"
+                                        icon={<FiMail className="text-white/50 dark:text-gray-400" size={18} />}
+                                        inputLabelClassName="flex items-center text-white/80 dark:text-gray-200 mb-3 font-medium"
+                                        className="w-full bg-white/5 dark:bg-gray-700/50 border border-white/10 dark:border-gray-600/50 rounded-xl px-4 py-3 text-white dark:text-gray-100 placeholder-white/30 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed pl-10"
                                     />
                                     {!isEditing && <div className="absolute inset-0 bg-transparent rounded-xl cursor-not-allowed"></div>}
                                 </div>
                             </div>
 
                             {isEditing && (
-                                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="pt-6 border-t border-white/10">
-                                    <Heading className="text-xl font-bold text-white mb-4 flex items-center"><FiLock className="mr-2" />Change Password</Heading>
-                                    <Paragraph className="text-white/60 mb-4 text-sm">Leave password fields empty if you don&apos;t want to change your password.</Paragraph>
+                                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="pt-6 border-t border-white/10 dark:border-gray-600/50">
+                                    <Heading className="text-xl font-bold text-white dark:text-white mb-4 flex items-center"><FiLock className="mr-2" />Change Password</Heading>
+                                    <Paragraph className="text-white/60 dark:text-gray-400 mb-4 text-sm">Leave password fields empty if you don&apos;t want to change your password.</Paragraph>
 
                                     <div className="space-y-4">
                                         <div className="relative">
@@ -241,28 +241,28 @@ export default function EditProfile() {
                                             <PasswordInput label="Confirm New Password" name="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} showPassword={showConfirmPassword} setShowPassword={setShowConfirmPassword} disabled={!isEditing || isUpdating} placeholder="Confirm your new password" />
                                         </div>
 
-                                        {formData.password && !isPasswordStrong && <Paragraph className="text-red-400 text-sm">Password must be at least 6 characters long</Paragraph>}
-                                        {formData.confirmPassword && !passwordsMatch && <Paragraph className="text-red-400 text-sm">Passwords do not match</Paragraph>}
-                                        {formData.password && formData.confirmPassword && passwordsMatch && isPasswordStrong && <Paragraph className="text-green-400 text-sm">Passwords match and meet requirements</Paragraph>}
+                                        {formData.password && !isPasswordStrong && <Paragraph className="text-red-400 dark:text-red-300 text-sm">Password must be at least 6 characters long</Paragraph>}
+                                        {formData.confirmPassword && !passwordsMatch && <Paragraph className="text-red-400 dark:text-red-300 text-sm">Passwords do not match</Paragraph>}
+                                        {formData.password && formData.confirmPassword && passwordsMatch && isPasswordStrong && <Paragraph className="text-green-400 dark:text-green-300 text-sm">Passwords match and meet requirements</Paragraph>}
                                     </div>
                                 </motion.div>
                             )}
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-6 border-t border-white/10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-6 border-t border-white/10 dark:border-gray-600/50">
                                 <div>
-                                    <Paragraph className="text-white/60 text-sm mb-1">User ID</Paragraph>
-                                    <Paragraph className="text-white font-mono text-sm bg-white/5 p-2 rounded-lg">{userInfo?.id}</Paragraph>
+                                    <Paragraph className="text-white/60 dark:text-gray-400 text-sm mb-1">User ID</Paragraph>
+                                    <Paragraph className="text-white dark:text-gray-100 font-mono text-sm bg-white/5 dark:bg-gray-700/50 p-2 rounded-lg">{userInfo?.id}</Paragraph>
                                 </div>
                                 <div>
-                                    <Paragraph className="text-white/60 text-sm mb-1">Referral Status</Paragraph>
-                                    <Paragraph className="text-white bg-white/5 p-2 rounded-lg">{data?.data.user.referredBy ? "Referred User" : "Original User"}</Paragraph>
+                                    <Paragraph className="text-white/60 dark:text-gray-400 text-sm mb-1">Referral Status</Paragraph>
+                                    <Paragraph className="text-white dark:text-gray-100 bg-white/5 dark:bg-gray-700/50 p-2 rounded-lg">{data?.data.user.referredBy ? "Referred User" : "Original User"}</Paragraph>
                                 </div>
                             </div>
 
                             {isEditing && (
-                                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-white/10">
-                                    <Button type="button" onClick={handleCancel} disabled={isUpdating} className="flex-1 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Cancel</Button>
-                                    <Button type="submit" disabled={!canSubmit || isUpdating} className="flex-1 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-white/10 dark:border-gray-600/50">
+                                    <Button type="button" onClick={handleCancel} disabled={isUpdating} className="flex-1 bg-white/10 dark:bg-gray-700/50 hover:bg-white/20 dark:hover:bg-gray-600/50 border border-white/20 dark:border-gray-600/50 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Cancel</Button>
+                                    <Button type="submit" disabled={!canSubmit || isUpdating} className="flex-1 bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 dark:from-purple-700 dark:to-cyan-700 dark:hover:from-purple-600 dark:hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
                                         {isUpdating ? (<><div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>Updating...</>) : (<><FiSave size={18} />Save Changes</>)}
                                     </Button>
                                 </motion.div>
@@ -272,8 +272,8 @@ export default function EditProfile() {
                 </motion.div>
 
                 {isEditing && canSubmit && (
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 px-4 py-2 rounded-full flex items-center gap-2">
-                        <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-cyan-500/20 dark:bg-cyan-600/30 border border-cyan-500/30 dark:border-cyan-500/50 text-cyan-300 dark:text-cyan-400 px-4 py-2 rounded-full flex items-center gap-2">
+                        <div className="w-2 h-2 bg-cyan-400 dark:bg-cyan-300 rounded-full animate-pulse"></div>
                         Unsaved changes - {hasPasswordChanges ? "Profile & Password" : "Profile"}
                     </motion.div>
                 )}

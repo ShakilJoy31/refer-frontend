@@ -121,7 +121,7 @@ export default function RegisterForm({ initialReferredBy = "" }: RegisterFormPro
     };
 
     return (
-        <section className="min-h-screen flex items-center justify-center px-4 py-8">
+        <section className="min-h-screen flex items-center justify-center px-4 py-8 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
             {/* Animated Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
                 <motion.div
@@ -148,7 +148,7 @@ export default function RegisterForm({ initialReferredBy = "" }: RegisterFormPro
                 className="w-full max-w-xl relative z-10"
             >
                 {/* Main Card */}
-                <div className="bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 shadow-2xl overflow-hidden">
+                <div className="bg-white/10 dark:bg-gray-800/80 backdrop-blur-lg rounded-3xl border border-white/20 dark:border-gray-600/50 shadow-2xl overflow-hidden">
                     {/* Gradient Header */}
                     <div className="bg-gradient-to-r from-purple-600 to-cyan-600 p-8 text-center">
                         <motion.div
@@ -172,7 +172,7 @@ export default function RegisterForm({ initialReferredBy = "" }: RegisterFormPro
                             <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-2xl text-red-200 text-sm"
+                                className="mb-6 p-4 bg-red-500/20 dark:bg-red-600/30 border border-red-500/30 dark:border-red-500/50 rounded-2xl text-red-200 dark:text-red-300 text-sm"
                             >
                                 {"data" in error && typeof error.data === "object" && error.data !== null && "message" in error.data
                                     ? (error.data as { message?: string }).message
@@ -193,18 +193,18 @@ export default function RegisterForm({ initialReferredBy = "" }: RegisterFormPro
                                     label="Full Name"
                                     name="name"
                                     type="text"
-                                    inputLabelClassName="text-white mb-1 text-sm font-medium dark:text-gray-300"
+                                    inputLabelClassName="text-white dark:text-gray-200 mb-1 text-sm font-medium"
                                     value={formData.name}
                                     onChange={handleChange}
                                     placeholder="Enter your full name"
                                     icon={<FiUser className="h-5 w-5 text-purple-500" />}
-                                    className="bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-3 w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                    className="bg-white/5 dark:bg-gray-700/50 border border-white/10 dark:border-gray-600/50 rounded-2xl pl-12 pr-4 py-3 w-full text-white dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                                 />
                                 {errors.name && (
                                     <motion.p
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
-                                        className="text-red-400 text-xs mt-1"
+                                        className="text-red-400 dark:text-red-300 text-xs mt-1"
                                     >
                                         {errors.name}
                                     </motion.p>
@@ -217,18 +217,18 @@ export default function RegisterForm({ initialReferredBy = "" }: RegisterFormPro
                                     label="Email Address"
                                     name="email"
                                     type="email"
-                                    inputLabelClassName="text-white mb-1 text-sm font-medium dark:text-gray-300"
+                                    inputLabelClassName="text-white dark:text-gray-200 mb-1 text-sm font-medium"
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder="you@example.com"
                                     icon={<FiMail className="h-5 w-5 text-purple-500" />}
-                                    className="bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-3 w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                    className="bg-white/5 dark:bg-gray-700/50 border border-white/10 dark:border-gray-600/50 rounded-2xl pl-12 pr-4 py-3 w-full text-white dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                                 />
                                 {errors.email && (
                                     <motion.p
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
-                                        className="text-red-400 text-xs mt-1"
+                                        className="text-red-400 dark:text-red-300 text-xs mt-1"
                                     >
                                         {errors.email}
                                     </motion.p>
@@ -241,18 +241,18 @@ export default function RegisterForm({ initialReferredBy = "" }: RegisterFormPro
                                     <InputField
                                         label="Password"
                                         name="password"
-                                        inputLabelClassName="text-white mb-1 text-sm font-medium dark:text-gray-300"
+                                        inputLabelClassName="text-white dark:text-gray-200 mb-1 text-sm font-medium"
                                         type={showPassword ? "text" : "password"}
                                         value={formData.password}
                                         onChange={handleChange}
                                         placeholder="Create a strong password"
                                         icon={<FiLock className="h-5 w-5 text-purple-500" />}
-                                        className="bg-white/5 border border-white/10 rounded-2xl pl-12 pr-12 py-3 w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                        className="bg-white/5 dark:bg-gray-700/50 border border-white/10 dark:border-gray-600/50 rounded-2xl pl-12 pr-12 py-3 w-full text-white dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                                     />
                                     <Button
                                         type="button"
                                         onClick={() => setShowPassword(!showPassword)}
-                                        className="absolute right-3 -bottom-2 transform -translate-y-1/2 text-gray-400 hover:cursor-pointer transition-colors duration-200 p-1"
+                                        className="absolute right-3 -bottom-2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:cursor-pointer transition-colors duration-200 p-1"
                                     >
                                         <AnimatePresence mode="wait">
                                             <motion.div
@@ -271,7 +271,7 @@ export default function RegisterForm({ initialReferredBy = "" }: RegisterFormPro
                                     <motion.p
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
-                                        className="text-red-400 text-xs mt-1"
+                                        className="text-red-400 dark:text-red-300 text-xs mt-1"
                                     >
                                         {errors.password}
                                     </motion.p>
@@ -284,23 +284,23 @@ export default function RegisterForm({ initialReferredBy = "" }: RegisterFormPro
                                     label="Referred By (Optional)"
                                     name="referredBy"
                                     type="text"
-                                    inputLabelClassName="text-white mb-1 text-sm font-medium dark:text-gray-300"
+                                    inputLabelClassName="text-white dark:text-gray-200 mb-1 text-sm font-medium"
                                     value={initialReferredBy ? initialReferredBy : formData.referredBy}
                                     onChange={handleChange}
                                     placeholder="Enter referral code"
                                     icon={<FiGift className="h-5 w-5 text-cyan-400" />}
-                                    className="bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-3 w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300"
+                                    className="bg-white/5 dark:bg-gray-700/50 border border-white/10 dark:border-gray-600/50 rounded-2xl pl-12 pr-4 py-3 w-full text-white dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-300"
                                 />
                                 {errors.referredBy && (
                                     <motion.p
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
-                                        className="text-red-400 text-xs mt-1"
+                                        className="text-red-400 dark:text-red-300 text-xs mt-1"
                                     >
                                         {errors.referredBy}
                                     </motion.p>
                                 )}
-                                <Paragraph className="text-cyan-300 text-xs mt-2">
+                                <Paragraph className="text-cyan-300 dark:text-cyan-400 text-xs mt-2">
                                     Enter a referral code to get bonus rewards!
                                 </Paragraph>
                             </motion.div>
@@ -313,7 +313,7 @@ export default function RegisterForm({ initialReferredBy = "" }: RegisterFormPro
                                 <Button
                                     type="submit"
                                     disabled={isLoading}
-                                    className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 disabled:from-gray-600 disabled:to-gray-600 disabled:cursor-not-allowed text-white font-semibold py-4 px-6 rounded-2xl shadow-lg transition-all duration-300 transform hover:shadow-xl"
+                                    className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 dark:from-purple-700 dark:to-cyan-700 dark:hover:from-purple-600 dark:hover:to-cyan-600 disabled:from-gray-600 disabled:to-gray-600 disabled:cursor-not-allowed text-white font-semibold py-4 px-6 rounded-2xl shadow-lg transition-all duration-300 transform hover:shadow-xl"
                                 >
                                     <AnimatePresence mode="wait">
                                         {isLoading ? (
@@ -350,11 +350,11 @@ export default function RegisterForm({ initialReferredBy = "" }: RegisterFormPro
                         <motion.div
                             className="mt-6 text-center"
                         >
-                            <Paragraph className="text-white/70 text-sm">
+                            <Paragraph className="text-white/70 dark:text-gray-400 text-sm">
                                 Already have an account?{" "}
                                 <Link
                                     href="/login"
-                                    className="text-cyan-300 hover:text-cyan-200 font-semibold transition-colors duration-200 underline"
+                                    className="text-cyan-300 dark:text-cyan-400 hover:text-cyan-200 dark:hover:text-cyan-300 font-semibold transition-colors duration-200 underline"
                                 >
                                     Sign in here
                                 </Link>
