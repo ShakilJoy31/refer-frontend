@@ -13,7 +13,7 @@ const DataLoader = ({textToRender} : {textToRender: string}) => {
       <span>{textToRender}</span>
     </motion.div>
   </div>
-  );
+  ); 
 };
 
 export default DataLoader;

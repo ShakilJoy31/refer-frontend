@@ -71,9 +71,6 @@ MONGO_URI=mongodb+srv://shakidul31_db_user:eL7g3scDYAW1Wpbf@cluster0.vz2njx6.mon
 
 
 
-
-
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
